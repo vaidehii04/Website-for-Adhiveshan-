@@ -1,24 +1,24 @@
-Mandir Explorer — Instructions
+Mandir Explorer — How to Get Started
+🛕 About This Project
 
-How to Open and Explore This Website:
+This website was built for Adhiveshan as a showcase of all five BAPS mandirs in North America — their history, details, vibes, the whole deal. It’s basically your mini–virtual yatra.
+Oh, and btw… I won the skills competition with this project.
+Yes.
+Correct.
+Flex on ’em. 🎉💅
 
-1. **Unzip the downloaded folder.**
-2. **Open the 'public' folder.**
-3. **Double-click `index.html`** to launch the website in your web browser.
-   - This works on any modern browser (Chrome, Edge, Safari, Firefox, etc).
+🚀 Opening the Website
+Head into the public folder.
+Double-click index.html to launch the site in your browser.
+Works on Chrome, Edge, Safari, Firefox — pretty much anything that isn’t fossil-level outdated.
 
-**For the Best Experience (Optional):**
-- If you have VS Code and Live Server installed:
-   1. Open the folder in VS Code.
-   2. Right-click on `index.html` in the Explorer.
-   3. Select **"Open with Live Server"**.
-   4. This will launch the site at a local address, like:  
-      `http://127.0.0.1:5500/public/index.html`  
-   *(Note: This link only works on your own computer after running Live Server)*
+🌟 Want the Smoothest Experience? (Optional)
+If you're using VS Code with the Live Server extension:
+Open the project folder in VS Code.
+In the Explorer sidebar, right-click index.html.
+Hit “Open with Live Server.”
+Your site will appear at a local link like:
+http://127.0.0.1:5500/public/index.html
+(That link only works on your own machine while Live Server is running — no sharable magic here unfortunatley)
 
----
-
-**Created by Vaidehi Panchal for the 2025 BAPS Tech Expressions Adhiveshan.**
-
-If you have any issues opening the site, please contact me!
 
