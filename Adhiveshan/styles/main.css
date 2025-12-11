@@ -1,0 +1,335 @@
+:root {
+  --bg: #FCF7F2;
+  --primary: #6B3E1D;
+  --secondary: #E2B07E;
+  --maroon: #841C26;
+  --peach: #F8D3A0;
+  --gold: #FFD382;
+  --white: #FFFFFF;
+}
+
+body {
+  background: radial-gradient(ellipse at 60% 30%, #fffbe7 60%, #fcf7f2 100%);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  width: 100vw;
+  min-height: 460px;
+  background: linear-gradient(120deg, rgba(255,234,181,0.77), rgba(255,255,255,0.65));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0 0 56px 56px;
+  box-shadow: 0 6px 50px #e2b07e44;
+  margin-bottom: 2.7rem;
+  overflow: hidden;
+}
+
+.mandir-ornament {
+  margin: 1.2rem auto 1rem auto;
+  width: 60px;
+  display: block;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 100vw;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.80) blur(0.5px);
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 8px 38px #f8d3a042;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 80px; /* adjust for ornament */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(120deg,rgba(255,234,181,0.25) 70%,rgba(250,238,223,0.48) 100%);
+  text-align: center;
+  padding: 2rem 1.2rem 1.7rem 1.2rem;
+  pointer-events: none; /* don't block buttons */
+}
+
+.main-header, .hero h1 {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 3.1rem;
+  color: #841C26;
+  letter-spacing: 1.5px;
+  text-shadow: 0 4px 12px #ffeab566;
+  margin-bottom: 0.2em;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: #6B3E1D;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  z-index: 2;
+  position: relative;
+}
+
+#quoteBtn {
+  margin-top: 0.7rem;
+  padding: 0.9rem 2.1rem;
+  background: linear-gradient(90deg, #e2b07e 60%, #FFD382 100%);
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  font-size: 1.12rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  box-shadow: 0 4px 12px #e2b07e77;
+  transition: background 0.2s, transform 0.22s;
+  z-index: 2;
+  position: relative;
+  pointer-events: auto; /* make button clickable */
+}
+#quoteBtn:hover {
+  background: linear-gradient(90deg, #841C26 70%, #FFD382 100%);
+  color: #FFD382;
+  transform: scale(1.05);
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff7efcc;
+  backdrop-filter: blur(6px);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 1.5px 8px #e2b07e33;
+  margin-bottom: 2rem;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem 0;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #841C26;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  transition: color 0.22s;
+  font-family: 'Playfair Display', serif;
+}
+.nav-links a:hover {
+  color: #E2B07E;
+  text-shadow: 0 2px 6px #ffeab566;
+}
+
+/* Section Styling */
+.section {
+  max-width: 950px;
+  margin: 0 auto 3.2rem auto;
+  padding: 2.2rem 1.5rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 36px #e2b07e22;
+}
+.section-title, h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  color: #6B3E1D;
+  margin-bottom: 1.1rem;
+  letter-spacing: 1.2px;
+  text-align: center;
+  font-weight: 700;
+}
+.quote-text {
+  font-size: 1.13rem;
+  font-style: italic;
+  color: #774715;
+  text-align: center;
+}
+
+/* Button Grid */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 2.4rem;
+  margin-top: 1.4rem;
+}
+.btn-card {
+  display: block;
+  background: linear-gradient(120deg,#f8d3a0 70%,#ffeab5 100%);
+  padding: 2.1rem 1.1rem;
+  border-radius: 17px;
+  text-align: center;
+  font-size: 1.15rem;
+  color: #841C26;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 32px #e2b07e2f;
+  transition: transform 0.23s, background 0.2s, color 0.22s;
+  letter-spacing: 0.6px;
+}
+.btn-card:hover {
+  transform: translateY(-5px) scale(1.06);
+  background: linear-gradient(120deg, #FFD382 80%, #fffbe7 100%);
+  color: #6b3e1d;
+}
+
+/* Card Grid for Mandirs */
+.mandir-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+}
+.mandir-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #e2b07e19;
+  width: 270px;
+  text-align: center;
+  padding: 1.3rem 1rem 1.6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.mandir-card:hover {
+  transform: translateY(-7px) scale(1.04);
+  box-shadow: 0 16px 50px #f8d3a0aa;
+}
+.mandir-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 4px 20px #ffeab566;
+}
+.mandir-card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #6b3e1d;
+  font-size: 1.17rem;
+  margin: 0.3rem 0 0.7rem 0;
+}
+.mandir-card p {
+  font-size: 1rem;
+  color: #734a1b;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: #b89254;
+  font-size: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* MODAL STYLES */
+#modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(35, 22, 12, 0.65);
+  display: none; /* hide by default */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+#modal-overlay[style*="flex"] {
+  display: flex !important; /* show when JS sets to flex */
+}
+#modal-content {
+  background: #fffbe7;
+  border-radius: 20px;
+  max-width: 430px;
+  width: 90vw;
+  padding: 2rem 1.2rem;
+  box-shadow: 0 8px 40px #e2b07e44;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.22s;
+}
+#modal-close {
+  position: absolute;
+  top: 12px; right: 18px;
+  font-size: 2rem;
+  color: #d88d3c;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.15s;
+}
+#modal-close:hover { color: #841C26; }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.vinyl-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.2rem;
+  margin-bottom: 0.7rem;
+}
+.vinyl-record {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #232323 0px, #232323 8px, #393939 11px, #232323 16px);
+  border: 3.5px solid #241b12;
+  position: relative;
+  animation: spinVinyl 2.8s linear infinite;
+  box-shadow: 0 6px 32px #e2b07e22, 0 1px 6px #5e310944;
+}
+@keyframes spinVinyl {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+.vinyl-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #fffbe7;
+  border-radius: 50%;
+  border: 4px solid #e2b07e;
+  z-index: 2;
+  box-shadow: 0 2px 8px #e2b07e88;
+}
+.vinyl-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: #ffd382;
+  border-radius: 50%;
+  border: 2px solid #841C26;
+  z-index: 3;
+}
+

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mandir Explorer — Mandirs</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fdf7f3;
+      color: #6B3E1D;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 2rem 0 2.5rem 0;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      letter-spacing: 1.2px;
+      color: #841C26;
+    }
+    .mandir-card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    .mandir-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px #e2b07e19;
+      width: 270px;
+      text-align: center;
+      padding: 1.3rem 1rem 1.6rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .mandir-card:hover {
+      transform: translateY(-7px) scale(1.04);
+      box-shadow: 0 16px 50px #f8d3a0aa;
+    }
+    .mandir-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 4px 20px #ffeab566;
+    }
+    .mandir-card h2 {
+      font-family: 'Playfair Display', serif;
+      color: #6b3e1d;
+      font-size: 1.17rem;
+      margin: 0.3rem 0 0.7rem 0;
+    }
+    .mandir-card p {
+      font-size: 1rem;
+      color: #734a1b;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0;
+    }
+    /* Modal Styles */
+    #modal-overlay {
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(35, 22, 12, 0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    #modal-content {
+      background: #fffbe7;
+      border-radius: 20px;
+      max-width: 430px;
+      width: 90vw;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 8px 40px #e2b07e44;
+      text-align: center;
+      position: relative;
+    }
+    #modal-close {
+      position: absolute;
+      top: 12px; right: 18px;
+      font-size: 2rem;
+      color: #d88d3c;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #modal-close:hover { color: #841C26; }
+  </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<a href="index.html" style="
+  display: inline-block;
+  margin: 2rem 0 1.2rem 2rem;
+  padding: 0.7rem 2.1rem;
+  background: linear-gradient(90deg, #ffd382 70%, #e2b07e 100%);
+  color: #841c26;
+  border-radius: 32px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 20px #ffeab533;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+">
+  ← Back to Home
+</a>
+
+<body>
+  <h1>Shikharbaddh Mandirs of North America</h1>
+  <div class="mandir-card-grid">
+    <!-- Robbinsville, NJ -->
+    <div class="mandir-card"
+      data-title="Robbinsville, NJ"
+      data-img="../assets/robbinsville.jpg"
+      data-desc="The BAPS Shri Swaminarayan Mandir in Robbinsville, NJ, stands as one of the largest and most awe-inspiring Hindu mandirs outside of India. Built almost entirely by hand, this spiritual wonder is crafted from more than 13,000 pieces of Italian Carrara marble, each carved by artisans in India before being assembled like a giant puzzle on American soil. Its shimmering white domes, delicate carvings, and vast campus transport every visitor into an atmosphere of peace and devotion.
+
+But the story of Robbinsville Mandir is about more than stone. It is a testament to the dedication of thousands of volunteers and devotees who worked tirelessly, day and night, for years to bring Pramukh Swami Maharaj’s vision to life. From elaborate festivals and grand processions to quiet, meditative evenings, the mandir has become a beacon of community, unity, and selfless service for all who enter its gates.
+
+Each visit feels like a step into a living legacy—where ancient traditions meet the modern world, and everyone, regardless of background, is welcomed with warmth and respect.">
+      <img src="../assets/robbinsville.jpg" alt="Robbinsville Mandir">
+      <h2>Robbinsville, NJ</h2>
+      <p>One of the largest traditional Hindu mandirs outside India. Known for its intricate Italian marble and devotion.</p>
+    </div>
+    <!-- Toronto, ON -->
+    <div class="mandir-card"
+      data-title="Toronto, ON"
+      data-img="../assets/toronto.jpg"
+      data-desc="In the heart of Canada’s largest city, the BAPS Shri Swaminarayan Mandir in Toronto is more than an architectural landmark—it’s a spiritual home for thousands. Opened in 2007, this mandir is built from more than 24,000 hand-carved pieces of Italian Carrara marble, Turkish limestone, and Indian pink stone. The artistry of its columns and domes, set against the Toronto skyline, is breathtaking and timeless.
+
+But what truly sets Toronto Mandir apart is its vibrant community life. Every week, the mandir buzzes with youth activities, spiritual classes, festivals, and seva projects that benefit all Canadians. The adjacent Heritage Museum tells the story of India’s spiritual heritage and the contributions of the Hindu diaspora to Canada.
+
+Whether you come for prayer, celebration, or simply to admire its tranquil beauty, Toronto Mandir offers an open invitation to discover a living tradition, carried forward with love in the heart of North America.">
+      <img src="../assets/toronto.jpg" alt="Toronto Mandir">
+      <h2>Toronto, ON</h2>
+      <p>Canada’s first shikharbaddh mandir, a hub for spirituality, service, and culture in North America.</p>
+    </div>
+    <!-- Chicago, IL -->
+    <div class="mandir-card"
+      data-title="Chicago, IL"
+      data-img="../assets/chicago.jpg"
+      data-desc="As the first BAPS shikharbaddh mandir in North America, the Chicago Mandir holds a special place in history. Since its inauguration in 2004, it has welcomed countless visitors—devotees, tourists, and schoolchildren alike—into its intricately carved stone halls. The traditional architecture, complete with towering spires and delicately carved pillars, stands in beautiful contrast to the wide Illinois plains.
+
+The story of Chicago Mandir is one of vision, sacrifice, and boundless faith. It was brought to life by the tireless efforts of the community, many of whom balanced their own work and family lives with hours of seva, all inspired by the teachings of Pramukh Swami Maharaj. Over the years, it has become a hub for cultural and spiritual events, drawing people from all over the Midwest.
+
+Here, generations of families gather—not just to pray, but to learn, celebrate, and carry forward the values of service and unity. The mandir is a living link between the ancient and the modern, between India and America.">
+      <img src="../assets/chicago.jpg" alt="Chicago Mandir">
+      <h2>Chicago, IL</h2>
+      <p>The first BAPS shikharbaddh mandir in the USA, an architectural and spiritual landmark for the Midwest.</p>
+    </div>
+    <!-- Houston, TX -->
+    <div class="mandir-card"
+      data-title="Houston, TX"
+      data-img="../assets/houston.jpg"
+      data-desc="Everything is bigger in Texas—and the BAPS Shri Swaminarayan Mandir in Houston is no exception. Since opening its doors in 2004, the mandir’s gleaming white marble and pink sandstone structure has become an icon in the state, drawing people from all backgrounds. Every carving and motif reflects a story from Hindu scriptures, carefully crafted by artisans from around the world.
+
+Beyond its architectural beauty, Houston Mandir is a center for service and outreach, embodying the spirit of ‘In the joy of others lies our own.’ Whether organizing food drives, disaster relief, or youth workshops, the mandir brings together the Houston community in times of need and celebration alike.
+
+Visitors are always greeted with Southern hospitality and a sense of belonging. With every festival, kirtan, and daily aarti, Houston Mandir stands as a symbol of unity in diversity—a home for the soul in the heart of Texas.">
+      <img src="../assets/houston.jpg" alt="Houston Mandir">
+      <h2>Houston, TX</h2>
+      <p>Combining grandeur and devotion, this mandir is a testament to unity in diversity.</p>
+    </div>
+    <!-- Chino Hills, CA -->
+    <div class="mandir-card"
+      data-title="Chino Hills, CA"
+      data-img="../assets/chinohills.jpg"
+      data-desc="Rising like a white lotus above the hills of Southern California, the BAPS Shri Swaminarayan Mandir in Chino Hills is a modern marvel and a spiritual sanctuary. Its luminous exterior—carved from pristine Italian marble—catches the California sun, while inside, the quiet grandeur offers peace and inspiration to all.
+
+The Chino Hills Mandir was built through years of dedication by devotees and volunteers, often working side by side with artisans flown in from India. Every detail, from the smallest motif to the soaring shikhars, is infused with meaning and artistry.
+
+Today, the mandir is a hub for cultural, spiritual, and social activities. It welcomes thousands of visitors for festivals, tours, and educational programs each year. A true jewel of the West Coast, Chino Hills Mandir embodies timeless values in a vibrant, welcoming community.">
+      <img src="../assets/chinohills.jpg" alt="Chino Hills Mandir">
+      <h2>Chino Hills, CA</h2>
+      <p>Famous for its dazzling white stonework, this mandir brings serenity and inspiration to the West Coast.</p>
+    </div>
+    <!-- Atlanta, GA (Bonus) -->
+    <div class="mandir-card"
+      data-title="Atlanta, GA"
+      data-img="../assets/atlanta.jpg"
+      data-desc="The BAPS Shri Swaminarayan Mandir in Atlanta, GA, may not be a shikharbaddh mandir, but it stands out for its architectural beauty and its role as a center of spirituality in the Southeast. The mandir is known for its white exterior, detailed carvings, and welcoming presence.
+
+From traditional festivals and joyous celebrations to educational outreach and seva projects, Atlanta Mandir brings together people from across the region, bridging cultures and generations. Its serene setting and welcoming community make it a place of inspiration for all who visit.
+
+The story of Atlanta Mandir is one of growth, harmony, and continued commitment to the values of seva, unity, and devotion.">
+      <img src="../assets/atlanta.jpg" alt="Atlanta Mandir">
+      <h2>Atlanta, GA</h2>
+      <p>Known for its intricate carvings and beautiful white exterior, inspiring the Southeast USA.</p>
+    </div>
+  </div>
+  <!-- Info Modal (hidden by default) -->
+  <div id="modal-overlay" style="display:none;">
+    <div id="modal-content">
+      <span id="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="" style="width:100%;border-radius:16px;margin-bottom:1rem;">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+  <script>
+    // When any card is clicked...
+    document.querySelectorAll('.mandir-card').forEach(card => {
+      card.addEventListener('click', function() {
+        document.getElementById('modal-title').innerText = card.getAttribute('data-title');
+        document.getElementById('modal-img').src = card.getAttribute('data-img');
+        document.getElementById('modal-img').alt = card.getAttribute('data-title');
+        document.getElementById('modal-desc').innerText = card.getAttribute('data-desc');
+        document.getElementById('modal-overlay').style.display = 'flex';
+      });
+    });
+
+    // When the close button is clicked, hide the modal
+    document.getElementById('modal-close').onclick = function() {
+      document.getElementById('modal-overlay').style.display = 'none';
+    };
+
+    // If you click outside the popup (on the dark background), hide the modal
+    document.getElementById('modal-overlay').onclick = function(e) {
+      if (e.target === this) this.style.display = 'none';
+    };
+  </script>
+</body>
+</html>

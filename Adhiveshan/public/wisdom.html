@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wisdom Wall | Mandir Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(ellipse at 60% 30%, #fffbe7 60%, #fcf7f2 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #6B3E1D;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background: #fff7efcc;
+      backdrop-filter: blur(6px);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 1.5px 8px #e2b07e33;
+      margin-bottom: 2.2rem;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #841C26;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      font-family: 'Playfair Display', serif;
+      transition: color 0.18s;
+    }
+    .nav-links a:hover {
+      color: #E2B07E;
+      text-shadow: 0 2px 6px #ffeab566;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #841C26;
+      letter-spacing: 1.5px;
+      font-size: 2.1rem;
+      text-align: center;
+      margin: 1.2rem 0 0.8rem 0;
+      font-weight: 700;
+    }
+    .wisdom-section {
+      max-width: 520px;
+      margin: 0 auto 2.8rem auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 6px 32px #e2b07e22;
+      padding: 2.4rem 1.3rem 2.5rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wisdom-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .wisdom-card {
+      background: linear-gradient(120deg,#f8d3a0 80%,#fffbe7 100%);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px #e2b07e19;
+      padding: 1.5rem 1.3rem;
+      color: #841C26;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.13rem;
+      text-align: center;
+      min-height: 90px;
+      width: 100%;
+      transition: box-shadow 0.18s, opacity 0.38s;
+      opacity: 1;
+      animation: fadeInQuote 0.7s;
+    }
+    .wisdom-card.fading {
+      opacity: 0;
+      transition: opacity 0.3s;
+      animation: none;
+    }
+    @keyframes fadeInQuote {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .wisdom-author {
+      font-size: 0.99em;
+      color: #b89254;
+      margin-top: 0.8em;
+      font-family: 'Poppins', sans-serif;
+    }
+    .arrow-btn {
+      background: #ffd382;
+      border: none;
+      color: #841C26;
+      border-radius: 50%;
+      font-size: 1.7rem;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin: 0 0.7rem;
+      box-shadow: 0 2px 8px #ffeab533;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.16s, color 0.16s, transform 0.15s;
+    }
+    .arrow-btn:hover {
+      background: #e2b07e;
+      color: #fff;
+      transform: scale(1.12);
+    }
+    .wisdom-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.3rem;
+      width: 100%;
+    }
+    .wisdom-form input, .wisdom-form textarea {
+      width: 100%;
+      max-width: 350px;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid #e2b07e;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      resize: vertical;
+      background: #fffbe7;
+    }
+    .wisdom-form button {
+      background: linear-gradient(90deg,#ffd382 60%,#e2b07e 100%);
+      color: #841C26;
+      border: none;
+      border-radius: 32px;
+      font-size: 1.07rem;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+      padding: 0.7rem 2.1rem;
+      box-shadow: 0 4px 16px #ffeab566;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.22s;
+    }
+    .wisdom-form button:hover {
+      background: linear-gradient(90deg, #841c26 70%, #ffd382 100%);
+      color: #FFD382;
+      transform: scale(1.04);
+    }
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      color: #b89254;
+      font-size: 1rem;
+      padding-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="mandir.html">Mandir Tour</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="kirtan.html">Kirtan</a></li>
+    </ul>
+  </nav>
+  <h1>Wisdom Wall</h1>
+  <div class="wisdom-section">
+    <div class="wisdom-carousel">
+      <button class="arrow-btn" id="prevBtn">&#8592;</button>
+      <div class="wisdom-card" id="quoteCard"></div>
+      <button class="arrow-btn" id="nextBtn">&#8594;</button>
+    </div>
+    <form class="wisdom-form" id="wisdomForm" autocomplete="off">
+      <textarea id="wisdomInput" rows="2" maxlength="180" required placeholder="Share your wisdom, inspiration, or favorite teaching..."></textarea>
+      <input id="nameInput" type="text" maxlength="32" placeholder="Your name (optional)">
+      <button type="submit">Add Wisdom</button>
+    </form>
+  </div>
+  <footer class="footer">
+    &copy; 2025 Mandir Explorer | Created with devotion by Vaidehi Panchal | In service to Bhagwan Swaminarayan | Wisdom Wall
+  </footer>
+  </footer>
+  <script>
+    // Array of wisdom quotes (with author)
+    const wisdomQuotes = [
+      { text: "Faith is not the clinging to a shrine but an endless pilgrimage of the heart.", author: "Mahant Swami Maharaj" },
+      { text: "Where there is ego, there is no unity. Where there is unity, there is victory.", author: "Pramukh Swami Maharaj" },
+      { text: "The world is one family when we serve with love.", author: "Brahmaswarup Yogiji Maharaj" },
+      { text: "Let every action of yours be filled with bhakti and humility.", author: "Mahant Swami Maharaj" },
+      { text: "To forgive is the highest form of strength.", author: "Pramukh Swami Maharaj" },
+      { text: "A heart full of gratitude is the doorway to peace.", author: "Pramukh Swami Maharaj" },
+      { text: "True happiness lies in making others happy.", author: "Brahmaswarup Shastriji Maharaj" },
+      { text: "Live such a life that others are inspired by your example.", author: "Gunatitanand Swami" }
+    ];
+
+    let currentQuote = 0;
+    let autoSlideTimer = null;
+    const quoteCard = document.getElementById('quoteCard');
+
+    function showQuote(idx, animated = true) {
+      if (animated) {
+        quoteCard.classList.add('fading');
+        setTimeout(() => {
+          renderQuote(idx);
+          quoteCard.classList.remove('fading');
+        }, 320);
+      } else {
+        renderQuote(idx);
+      }
+    }
+
+    function renderQuote(idx) {
+      const q = wisdomQuotes[idx];
+      quoteCard.innerHTML = `"${q.text}"<div class="wisdom-author">– ${q.author}</div>`;
+    }
+
+    function nextQuote() {
+      currentQuote = (currentQuote + 1) % wisdomQuotes.length;
+      showQuote(currentQuote);
+    }
+
+    function prevQuote() {
+      currentQuote = (currentQuote - 1 + wisdomQuotes.length) % wisdomQuotes.length;
+      showQuote(currentQuote);
+    }
+
+    // Initial display
+    showQuote(currentQuote, false);
+
+    // Next/Prev functionality
+    document.getElementById('nextBtn').onclick = () => {
+      nextQuote();
+      resetAutoSlide();
+    };
+    document.getElementById('prevBtn').onclick = () => {
+      prevQuote();
+      resetAutoSlide();
+    };
+
+    // Add user wisdom
+    document.getElementById('wisdomForm').onsubmit = function(e) {
+      e.preventDefault();
+      const wisdom = document.getElementById('wisdomInput').value.trim();
+      const name = document.getElementById('nameInput').value.trim();
+      if (wisdom.length > 0) {
+        wisdomQuotes.splice(currentQuote+1, 0, { text: wisdom, author: name ? name : "Anonymous" });
+        currentQuote = currentQuote + 1;
+        showQuote(currentQuote);
+        resetAutoSlide();
+        document.getElementById('wisdomInput').value = '';
+        document.getElementById('nameInput').value = '';
+      }
+    };
+
+    // Auto-slide every 7 seconds
+    function resetAutoSlide() {
+      if (autoSlideTimer) clearInterval(autoSlideTimer);
+      autoSlideTimer = setInterval(nextQuote, 7000);
+    }
+    resetAutoSlide();
+
+    // Pause auto-slide while user is focusing the form
+    document.getElementById('wisdomForm').addEventListener('focusin', () => {
+      if (autoSlideTimer) clearInterval(autoSlideTimer);
+    });
+    document.getElementById('wisdomForm').addEventListener('focusout', () => {
+      resetAutoSlide();
+    });
+  </script>
+</body>
+</html>

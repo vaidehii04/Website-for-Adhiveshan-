@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | Mandir Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(ellipse at 60% 30%, #fffbe7 60%, #fcf7f2 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #6B3E1D;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background: #fff7efcc;
+      backdrop-filter: blur(6px);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 1.5px 8px #e2b07e33;
+      margin-bottom: 2.2rem;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #841C26;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      font-family: 'Playfair Display', serif;
+      transition: color 0.18s;
+    }
+    .nav-links a:hover {
+      color: #E2B07E;
+      text-shadow: 0 2px 6px #ffeab566;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #841C26;
+      letter-spacing: 1.5px;
+      font-size: 2.1rem;
+      text-align: center;
+      margin: 1.2rem 0 0.7rem 0;
+      font-weight: 700;
+    }
+    .gallery-section {
+      max-width: 540px;
+      margin: 0 auto 2.5rem auto;
+      padding: 0 1.5rem 2.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 2rem auto 0 auto;
+    }
+    .gallery-card {
+      background: linear-gradient(120deg,#f8d3a0 75%,#fffbe7 100%);
+      border-radius: 18px;
+      box-shadow: 0 8px 30px #e2b07e19;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.19s;
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+      background: #fffbe7;
+      box-shadow: 0 4px 20px #ffeab566;
+      cursor: zoom-in;
+      transition: box-shadow 0.19s;
+    }
+    .gallery-caption {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.13rem;
+      color: #6b3e1d;
+      padding: 1.1rem 1.2rem 0.5rem 1.2rem;
+      text-align: center;
+      min-height: 54px;
+    }
+    .enlarge-note {
+      font-size: 0.98rem;
+      color: #b89254;
+      text-align: center;
+      margin-bottom: 1.3rem;
+      margin-top: -0.1rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.04em;
+      opacity: 0.92;
+    }
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ffd382;
+      border: none;
+      color: #841C26;
+      border-radius: 50%;
+      font-size: 2rem;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #ffeab533;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.16s, color 0.16s, transform 0.15s;
+      z-index: 1;
+      opacity: 0.93;
+    }
+    .arrow-btn:hover {
+      background: #e2b07e;
+      color: #fff;
+      transform: scale(1.08);
+    }
+    .arrow-btn.left { left: -28px; }
+    .arrow-btn.right { right: -28px; }
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(68,44,20,0.81);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #fffbe7;
+      border-radius: 18px;
+      max-width: 90vw;
+      max-height: 92vh;
+      box-shadow: 0 12px 60px #e2b07e55;
+      padding: 1.7rem 1.3rem 1.2rem 1.3rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: popIn 0.23s;
+    }
+    @keyframes popIn { from { transform: scale(0.88); opacity: 0;} to { transform: scale(1); opacity: 1;}}
+    .modal-img {
+      max-width: 68vw;
+      max-height: 60vh;
+      border-radius: 12px;
+      box-shadow: 0 6px 28px #ffd38255;
+      margin-bottom: 1.2rem;
+      background: #fff;
+    }
+    .modal-caption {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #841C26;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      padding: 0 0.5em;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 22px;
+      font-size: 2.3rem;
+      color: #d88d3c;
+      cursor: pointer;
+      font-weight: 800;
+      background: none;
+      border: none;
+      transition: color 0.16s;
+      z-index: 2;
+      opacity: 0.85;
+    }
+    .modal-close:hover { color: #841C26; }
+    @media (max-width: 700px) {
+      .modal-img { max-width: 98vw; max-height: 45vh;}
+      .modal-content { padding: 1rem 0.3rem;}
+    }
+    @media (max-width: 600px) {
+      .gallery-section { padding: 0 0.2rem 2rem 0.2rem;}
+      .slideshow-container { max-width: 99vw;}
+      .gallery-card img { height: 160px;}
+      .arrow-btn.left, .arrow-btn.right { left: 2px; right: 2px;}
+    }
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      color: #b89254;
+      font-size: 1rem;
+      padding-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<a href="index.html" style="
+  display: inline-block;
+  margin: 1.2rem 0 1.2rem 2rem;
+  padding: 0.65rem 2rem;
+  background: linear-gradient(90deg, #ffd382 70%, #e2b07e 100%);
+  color: #841c26;
+  border-radius: 32px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 20px #ffeab533;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+">
+  ← Back to Home
+</a>
+
+<body>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="mandir.html">Mandir Tour</a></li>
+      <li><a href="wisdom.html">Wisdom Wall</a></li>
+      <li><a href="kirtan.html">Kirtan</a></li>
+    </ul>
+  </nav>
+  <h1>Gallery</h1>
+  <div class="gallery-section">
+    <div class="slideshow-container">
+      <button class="arrow-btn left" id="prevBtn">&#8592;</button>
+      <div class="gallery-card" id="galleryCard">
+        <!-- JS will insert the image and caption here -->
+      </div>
+      <button class="arrow-btn right" id="nextBtn">&#8594;</button>
+    </div>
+    <div class="enlarge-note">Click photo to enlarge 🔍</div>
+  </div>
+
+  <!-- Modal for full image -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <img class="modal-img" id="modalImg" src="" alt="">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    &copy; © 2025 Mandir Explorer | Created with devotion by Vaidehi Panchal | In service to Bhagwan Swaminarayan | Gallery
+
+  </footer>
+  <script>
+    // Gallery images and captions
+   const gallery = [
+  // Main Mandirs
+  { src: "../assets/robbinsville.jpg", alt: "Robbinsville Mandir", caption: "Robbinsville, NJ — The world’s largest traditional Hindu mandir outside India, radiating serenity and timeless devotion." },
+  { src: "../assets/toronto.jpg", alt: "Toronto Mandir", caption: "Toronto, ON — Where culture, community, and ancient artistry unite in the heart of Canada." },
+  { src: "../assets/chicago.jpg", alt: "Chicago Mandir", caption: "Chicago, IL — North America’s first shikharbaddh mandir, an enduring spiritual beacon." },
+  { src: "../assets/houston.jpg", alt: "Houston Mandir", caption: "Houston, TX — A testament to unity in diversity and grand Texas spirit." },
+  { src: "../assets/chinohills.jpg", alt: "Chino Hills Mandir", caption: "Chino Hills, CA — White stone elegance gracing the West Coast with peace and inspiration." },
+  { src: "../assets/atlanta.jpg", alt: "Atlanta Mandir", caption: "Atlanta, GA — Southern warmth meets divine architecture and radiant devotion." },
+
+  // Deities & Sacred Murtis (add your actual alt texts as needed)
+  { src: "../assets/download (1).jpeg", alt: "Ram and Sita", caption: "Shri Ram and Sita — Divine icons of righteousness and virtue." },
+  { src: "../assets/download (2).jpeg", alt: "Krishna and Radha", caption: "Shri Krishna and Radha — The eternal embodiment of love and devotion." },
+  { src: "../assets/download (3).jpeg", alt: "Venkateshwara Bhagwan and Devi", caption: "Venkateshwara Bhagwan and Devi — Grace and blessings for all devotees." },
+
+  // Your newly uploaded images with custom captions:
+  // download (4).jpeg (Murti of Bhagwan Swaminarayan, Gadhada Sabha with devotees)
+  { src: "../assets/download (4).jpeg", alt: "Bhagwan Swaminarayan in Sabha", caption: "Bhagwan Swaminarayan bestowing blessings upon his devotees — the heart of sabha and spiritual learning." },
+  // download (5).jpeg (Guru and Disciple, Swaminarayan & Gunatitanand Swami)
+  { src: "../assets/download (5).jpeg", alt: "Guru and Disciple", caption: "The sacred bond of Guru and Disciple — Swaminarayan Bhagwan and Gunatitanand Swami, symbolizing eternal guidance." },
+  // download (8).jpeg (Marble pillars, intricate carvings)
+  { src: "../assets/download (8).jpeg", alt: "Tapomurti", caption: "Tapomurti surrounded by intrecatly carved marble pillars — every detail a testament to devotion and artistry." },
+  // download (9).jpeg (Statue and Devotee, outdoors, Mahant Swami Maharaj seated, Nilkanth Varni statue in background)
+  { src: "../assets/download (9).jpeg", alt: "Tapomurti and Mahant Swami", caption: "Nilkanth Varni’s divine presence towering over Mahant Swami Maharaj — inspiration and humility united." },
+  { src: "../assets/download (6).jpeg", alt: "Shiv and Parvati", caption: "Shiv and Parvati — the eternal divine couple, symbolizing harmony and strength." },
+  { src: "../assets/download (7).jpeg", alt: "Ghanshyam Maharaj", caption: "Ghanshyam Maharaj — Childhood form of Bhagwan Swaminarayan, ever radiant and playful." },
+  { src: "../assets/download (10).jpeg", alt: "Yogiji Maharaj", caption: "Yogiji Maharaj — Ever-smiling saint and torchbearer of bhakti." },
+  { src: "../assets/download.jpeg", alt: "Mahamandir murti", caption: "Swaminarayan Bhagwan and Gunatitanand Swami — Eternal spiritual partners in the Robbinsville Mahamandir." },
+  { src: "../assets/images (1).jpeg", alt: "Bhagatji Maharaj", caption: "Bhagatji Maharaj — Humility, faith, and unwavering devotion." },
+  { src: "../assets/images.jpeg", alt: "Shastriji Maharaj", caption: "Shastriji Maharaj — Visionary founder of BAPS, a life of sacrifice for satsang." },
+  { src: "../assets/pramukh.jpg", alt: "Pramukh Swami Mahara", caption: "Pramukh Swami Mahara radiant in gold, invite all to pause and reflect on lives of pure service and humility. Surrounded by hand-carved wooden pillars, every detail whispers a story of devotion, wisdom, and timeless spiritual legacy.”" }
+];
+
+
+    let current = 0;
+    const cardDiv = document.getElementById('galleryCard');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalClose = document.getElementById('modalClose');
+
+    function showGallery(idx) {
+      const g = gallery[idx];
+      cardDiv.innerHTML = `
+        <img src="${g.src}" alt="${g.alt}" id="enlargeImg">
+        <div class="gallery-caption">${g.caption}</div>
+      `;
+      // Re-attach enlarge event each time
+      document.getElementById('enlargeImg').onclick = function() {
+        modalImg.src = g.src;
+        modalImg.alt = g.alt;
+        modalCaption.textContent = g.caption;
+        modalOverlay.style.display = "flex";
+      };
+    }
+
+    function nextGallery() {
+      current = (current + 1) % gallery.length;
+      showGallery(current);
+    }
+
+    function prevGallery() {
+      current = (current - 1 + gallery.length) % gallery.length;
+      showGallery(current);
+    }
+
+    document.getElementById('nextBtn').onclick = nextGallery;
+    document.getElementById('prevBtn').onclick = prevGallery;
+
+    // Modal controls
+    modalClose.onclick = function() {
+      modalOverlay.style.display = "none";
+      modalImg.src = "";
+    };
+    modalOverlay.onclick = function(e) {
+      if (e.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+        modalImg.src = "";
+      }
+    };
+
+    // Show first card
+    showGallery(current);
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandir Explorer</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(ellipse at 60% 30%, #fffbe7 60%, #fcf7f2 100%);
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: #6B3E1D;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .main-hero {
+      background: linear-gradient(120deg,#fffbe7 85%,#ffeab5 100%), url('assets/images/hero-mandir.jpg') center/cover no-repeat;
+      padding: 3.2rem 0 2.2rem 0;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 6px 42px #e2b07e33;
+      margin-bottom: 1.6rem;
+    }
+    .main-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #841C26;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.22em;
+      font-weight: 700;
+    }
+    .main-hero .hero-subtitle {
+      max-width: 500px;
+      margin: 0 auto 1.3rem auto;
+      font-size: 1.21rem;
+      color: #6b3e1d;
+      background: #fffbe7d9;
+      padding: 0.58em 1.25em;
+      border-radius: 20px;
+      box-shadow: 0 2px 18px #ffeab533;
+      display: inline-block;
+    }
+    .start-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2.8rem;
+      background: linear-gradient(90deg, #ffd382 70%, #e2b07e 100%);
+      color: #841C26;
+      border-radius: 32px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 4px 20px #ffeab533;
+      font-size: 1.18rem;
+      letter-spacing: 1.2px;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .start-btn:hover {
+      background: linear-gradient(90deg, #841c26 70%, #ffd382 100%);
+      color: #FFD382;
+      transform: scale(1.05);
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff7efcc;
+      backdrop-filter: blur(6px);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 1.5px 8px #e2b07e33;
+      margin-bottom: 2.2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      justify-content: center;
+      padding: 1rem 0;
+      list-style: none;
+      margin: 0;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #841C26;
+      font-weight: 600;
+      font-size: 1.12rem;
+      letter-spacing: 0.5px;
+      font-family: 'Playfair Display', serif;
+      transition: color 0.18s;
+    }
+    .nav-links a:hover {
+      color: #E2B07E;
+      text-shadow: 0 2px 6px #ffeab566;
+    }
+    .section {
+      max-width: 640px;
+      margin: 0 auto 3.4rem auto;
+      padding: 2rem 1.2rem;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 6px 36px #e2b07e22;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: #b89254;
+      font-size: 1rem;
+      padding-bottom: 1.6rem;
+    }
+    @media (max-width: 600px) {
+      .main-hero h1 { font-size: 2.1rem; }
+      .main-hero .hero-subtitle { font-size: 1rem; }
+      .nav-links { gap: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-hero">
+    <h1>Mandir Explorer</h1>
+    <div class="hero-subtitle">Discover the Divine Beauty of Shikharbaddh Mandirs</div>
+    <a href="mandir.html" class="start-btn">Start Exploring</a>
+  </header>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="wisdom.html">Wisdom Wall</a></li>
+      <li><a href="kirtan.html">Kirtan</a></li>
+    </ul>
+  </nav>
+
+  <section class="section">
+    <p id="dailyQuote" style="font-size:1.15rem;font-style:italic;color:#774715;">“Click below for your daily inspiration.”</p>
+    <button id="quoteBtn" style="margin-top:0.7rem;padding:0.7rem 1.7rem;background:linear-gradient(90deg,#e2b07e 60%,#FFD382 100%);color:#fff;border:none;border-radius:32px;font-size:1.12rem;cursor:pointer;font-weight:600;letter-spacing:1.2px;box-shadow:0 4px 12px #e2b07e77;transition:background 0.2s,transform 0.22s;">
+      <span style="font-size:1.2em;vertical-align:middle;">✨</span> Inspire Me
+    </button>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Mandir Explorer | Created with devotion by Vaidehi Panchal | In service to Bhagwan Swaminarayan
+  </footer>
+
+  <script>
+    // 20 direct quotes from Satsang Diksha and Vachanamrut (BAPS-authentic)
+    const quotes = [
+      "Satsang Diksha 1: 'One who has firm faith in God and the Satpurush is truly blessed.'",
+      "Satsang Diksha 18: 'A true satsangi serves with humility and devotion.'",
+      "Satsang Diksha 48: 'Even amidst challenges, remain unwavering in faith.'",
+      "Satsang Diksha 73: 'Honesty and integrity are the foundation of spiritual life.'",
+      "Satsang Diksha 110: 'Offer every action at the feet of God.'",
+      "Satsang Diksha 146: 'Satsang brings about inner peace and harmony.'",
+      "Satsang Diksha 153: 'A devotee remains joyous in God's will.'",
+      "Satsang Diksha 161: 'Speak with kindness; let your words reflect divinity.'",
+      "Satsang Diksha 171: 'Daily reading of holy texts strengthens faith.'",
+      "Satsang Diksha 174: 'Live a life of non-violence, truth, and compassion.'",
+      "Vachanamrut Gadhada I-18: 'The company of the virtuous purifies the mind.'",
+      "Vachanamrut Gadhada I-58: 'One who desires liberation must develop deep love for God.'",
+      "Vachanamrut Gadhada II-13: 'When attachment for God deepens, all doubts are removed.'",
+      "Vachanamrut Gadhada III-27: 'See God in everyone and everything.'",
+      "Vachanamrut Kariyani 11: 'Only a heart filled with humility can understand God's glory.'",
+      "Vachanamrut Loya 13: 'Do not see faults in others; see virtues instead.'",
+      "Vachanamrut Gadhada I-41: 'A devotee should never lose hope in God's grace.'",
+      "Satsang Diksha 116: 'Meditate every morning to keep the mind calm.'",
+      "Satsang Diksha 180: 'Forgiveness is the ornament of a true devotee.'",
+      "Vachanamrut Sarangpur 7: 'Spiritual wisdom is gained by serving God and His devotees.'"
+    ];
+    document.getElementById('quoteBtn').onclick = () => {
+      const q = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('dailyQuote').innerText = q;
+    };
+  </script>
+</body>
+</html>
+
